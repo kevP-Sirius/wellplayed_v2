@@ -1,0 +1,1 @@
+application de musique développer avec react typescript et redux avec un backend en symfony 6 et mysql et servie par une application react native sous android
