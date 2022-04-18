@@ -1,7 +1,7 @@
 import { Routes,Route } from "react-router-dom"
 import { useEffect } from 'react';
 import Login from './components/login'
-import Signup from './components/signup'
+import SignupContainer from "./container/signupContainer";
 const App = () => {
 
   
@@ -15,10 +15,11 @@ const App = () => {
     <>
     <div className="container">
         
-            <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-            </Routes>
+      <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<SignupContainer />} />
+          <Route path="/dashboard" element={<>Dashboard</>} />
+      </Routes>
        
     </div>
     </>
