@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  php8: 
+    build: ./back_end_php
+    volumes:  
+      - './wellplayed_back_end_v2:/var/www/html'
+    ports:
+      - "8080:8080"
+    networks:
+      - app_wellplayed_network
+  mysql:
+
+    build: ./back_end_mysql
+    volumes:  
+      - './docker/data:/var/lib/mysql'
+    expose:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'dbpass3306'
+      MYSQL_USER: 'dbuser3306'
+      MYSQL_PASS: 'dbpass3306'
+    networks:
+      - app_wellplayed_network
+  
+networks:
+  app_wellplayed_network:
+    driver: bridge
