@@ -5,18 +5,19 @@ services:
     volumes:  
       - './wellplayed_back_end_v2/:/var/www/html'
     ports:
-      - 80:8000
+      - 8080:8000
   mysql:
     container_name: wellplayed_back_end_db
     build: ./back_end_mysql
     volumes:  
       - './docker/data:/var/lib/mysql'
-    expose:
-      - "3306"
+    ports:
+      - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: 'dbpass3306'
-      MYSQL_USER: 'dbuser3306'
-      MYSQL_PASS: 'dbpass3306'
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
     networks:
             default:
                 aliases:

@@ -8,4 +8,5 @@ RUN mv composer.phar /usr/local/bin/composer
 WORKDIR /var/www/html/
 RUN apk add unzip && apk add bash && apk add wget
 RUN wget https://get.symfony.com/cli/installer -O - | bash && mv /root/.symfony/bin/symfony /usr/local/bin/symfony
-CMD symfony server:start
+# RUN composer require annotations && composer require webapp && composer require symfony/serializer
+# CMD symfony server:start

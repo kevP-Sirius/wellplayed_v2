@@ -19,7 +19,7 @@ let baseUrlToUse = env=="dev"?baseUrlLocal:baseUrlProd
           password:action.data.password
         })
        
-        axios.post(`${baseUrlToUse}/signin`,data).then(response=>{
+        axios.post(`${baseUrlToUse}/api/signin`,data).then(response=>{
           
           console.log(response)
           if(response.data.status==="200"){
@@ -43,7 +43,8 @@ let baseUrlToUse = env=="dev"?baseUrlLocal:baseUrlProd
           role:action.data.role,
           password:action.data.password
         })
-        axios.post(`${baseUrlToUse}/signup`,data).then(response=>{
+        console.log(`${baseUrlToUse}/api/signup`)
+        axios.post(`${baseUrlToUse}/api/signup`,data).then(response=>{
           console.log(response)
           store.dispatch(updateErrorMessage(response.data))
           

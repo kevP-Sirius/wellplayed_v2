@@ -47,7 +47,7 @@ let Signup =({updateErrorMessage,messageError,signup,messageStatus,ipProd}:{upda
                         <div className="form-group inputPosition">
                         <Link className="nav-link active text-white"  to="/">Se connecter</Link>
                         </div>
-                        <button type="submit" className="btn btn-primary inputPosition">Connexion</button>
+                        <button type="submit" className="btn btn-primary inputPosition">S'inscrire</button>
                     </form>
                 
                 </div>

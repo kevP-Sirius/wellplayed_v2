@@ -5,7 +5,7 @@ const initialState = {
     messageError:'',
     messageStatus:'',
     ipProd:'3.16.207.62',
-    env:'prod'
+    env:'dev'
 
   };
   
