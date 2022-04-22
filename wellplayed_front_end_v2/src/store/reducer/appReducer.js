@@ -5,7 +5,8 @@ const initialState = {
     messageError:'',
     messageStatus:'',
     ipProd:'3.16.207.62',
-    env:'dev'
+    env:'dev',
+    messageList:[]
 
   };
   
@@ -16,6 +17,8 @@ const initialState = {
   export const ERROR_MSG_TYPE = 'ERROR_MSG_TYPE';
   export const CONNECT = 'CONNECT';
   export const DISCONNECT = 'DISCONNECT';
+  export const ADD_MESSAGE = 'ADD_MESSAGE';
+  export const CLEAR_MESSAGE ="CLEAR_MESSAGE"
   // == Reducer
   export const appReducer = (state = initialState, action = {}) => {
     
@@ -56,6 +59,16 @@ const initialState = {
         messageError:action.data.message,
         messageStatus:action.data.status
       };
+      case ADD_MESSAGE:
+      return  {
+        ...state,
+        messageList:[...messageList,{type:action.data.type,content:action.data.content,status:action.data.status}],
+      };
+      case CLEAR_MESSAGE:
+      return  {
+        ...state,
+        messageList:[],
+      };
       default:
         return state;
     }
@@ -93,7 +106,15 @@ const initialState = {
     {
     type: DISCONNECT,
   });
-  
+  export const addMessage = (data) => (
+    {
+    type: ADD_MESSAGE,
+    data
+  });
+  export const clearMessage = () => (
+    {
+    type: CLEAR_MESSAGE,
+  });
   
 
 
@@ -103,4 +124,5 @@ const initialState = {
 
   export const env = initialState.env;
   export const ipProd = initialState.ipProd;
+  export const messageList = initialState.messageList;
   

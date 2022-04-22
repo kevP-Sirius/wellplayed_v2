@@ -1,5 +1,5 @@
 import {
-    FIRST_TYPE,LOGIN_TYPE,SIGNUP_TYPE,updateErrorMessage,connect,env,ipProd
+    FIRST_TYPE,LOGIN_TYPE,SIGNUP_TYPE,ADD_MESSAGE,updateErrorMessage,connect,env,ipProd,messageList,addMessage
   } from '../store/reducer/appReducer';
   const axios = require('axios');
   const qs = require('qs');
@@ -44,15 +44,29 @@ let baseUrlToUse = env=="dev"?baseUrlLocal:baseUrlProd
           password:action.data.password
         })
         console.log(`${baseUrlToUse}/api/signup`)
+        
         axios.post(`${baseUrlToUse}/api/signup`,data).then(response=>{
-          console.log(response)
+          let data = {type:1,content:response.data.msg,status:0}
+          store.dispatch(addMessage(data))
+          console.log(response.data.msg)
           store.dispatch(updateErrorMessage(response.data))
           
         })
         break;
       }
+      case ADD_MESSAGE: {
+        
+        console.log(action.data)
+        // let currentMessageList = JSON.parse(localStorage.getItem('messageList'))
+        // localStorage.setItem('messageList',messageList)
+          
+        
+        
+        
+        break;
+      }
       default:
-        //next(action);
+        // next(action);
     }
   };
   

@@ -2,6 +2,7 @@ import { Routes,Route } from "react-router-dom"
 import { useEffect } from 'react';
 import Login from './components/login'
 import SignupContainer from "./container/signupContainer";
+
 const App = () => {
 
   
@@ -13,7 +14,9 @@ const App = () => {
 
   return (
     <>
+    
     <div className="container">
+    
         
       <Routes>
           <Route path="/" element={<Login />} />

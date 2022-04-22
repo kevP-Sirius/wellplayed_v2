@@ -33,8 +33,6 @@ class ApiController extends AbstractController
     #[Route('/api/signup', name: 'app_api')]
     public function index(Request $request,UserPasswordHasherInterface $encoder,EntityManagerInterface $em,UserRepository $userRepository)
     {
-     
-        
         $user = new User();
         $recievedData = $request->request->all();
         $dataGet=[];
@@ -52,11 +50,8 @@ class ApiController extends AbstractController
         $check = ($userRepository->findBy(['username'=>$user->getUsername()])||$userRepository->findBy(['email'=>$user->getEmail()]));
         
         if($check){
-            $data = ["error"=>"username or email already in use"];
-            return $this->returnResponse([
-                "msg"=>"username or email already in use"
-                "status"=>""
-            ]);
+            $data = ["msg"=>"username or email already in use"];
+            return $this->returnResponse($data);
         }
         $password = $request->request->get('password');
         $plainPassword = $password;
